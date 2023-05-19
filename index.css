@@ -1,0 +1,134 @@
+body {
+    background-color: rgba(0, 0, 0, 0.847);
+}
+
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-col-between {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.text-center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-w {
+    color: white;
+}
+
+.wrap {
+    width: 100%;
+    height: 100vh;
+}
+
+.card-wrap {
+    width: 80%;
+    height: 100%;
+    max-width: 1250px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap !important;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px white solid;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.party-on {
+    color: green;
+}
+
+.party-off {
+    color: grey;
+}
+
+.card-banner {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(125, 125, 125);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.member-icon {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.party-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #ffbd03;
+    border: none;
+}
+
+.party-set {
+    border: 4px solid red;
+}
+
+.modal {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 3px;
+}
+
+.submit-date {
+    width: 100%;
+    height: 60px;
+    background-color: #E01D5A;
+    border-radius: 27px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submit-input {
+    width: 20%;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid grey;
+
+    margin: 20px auto;
+}
+
+.submit-ul > li {
+    margin: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 50px;
+    background-color: #ffbd03;
+    border-radius: 27px;
+    border: none;
+}
