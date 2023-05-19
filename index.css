@@ -93,6 +93,11 @@ body {
 .party-set {
     border: 4px solid red;
 }
+.modal-wrap {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
 
 .modal {
     width: 500px;
@@ -117,8 +122,9 @@ body {
     height: 50px;
     border-radius: 10px;
     border: 1px solid grey;
-
     margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
 }
 
 .submit-ul > li {
@@ -131,4 +137,40 @@ body {
     background-color: #ffbd03;
     border-radius: 27px;
     border: none;
+}
+
+.party-color-1 {
+    width: 30px;
+    height: 30px;
+    background-color: #33b249;
+    border-radius: 50%;
+    margin: 5px;
+}
+.party-color-2 {
+    width: 30px;
+    height: 30px;
+    background-color: #4681f4;
+    border-radius: 50%;
+    margin: 5px;
+}
+.party-color-3 {
+    width: 30px;
+    height: 30px;
+    background-color: #80669d;
+    border-radius: 50%;
+    margin: 5px;
+}
+.party-color-4 {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(178, 68, 51);
+    border-radius: 50%;
+    margin: 5px;
+}
+.party-color-5 {
+    width: 30px;
+    height: 30px;
+    background-color: #dd7973;
+    border-radius: 50%;
+    margin: 5px;
 }
