@@ -40,6 +40,7 @@ const idList = ["월요일 점심","화요일 점심","수요일 점심","목요
 const matchDate = (targetDate, matchingIndex=-1) => {
   idList.forEach((date, index)=> {
     if(targetDate==date) {
+      console.log(targetDate, date)
       matchingIndex = index
       // 반복문 실행 종료
       return false
@@ -54,7 +55,9 @@ $(".submit-btn").click(()=>{
   // 날짜, 이름, 컬러 값 찾아오기
   let date = $(".submit-li-date").text()
   date = date.split(" ")[2] + " " + date.split(" ")[3] // .submit-li-date 값이 : 05월 16일 수요일 점심 과 같이 되어 있음
+  console.log(date)
   date = matchDate(date)
+  console.log(date)
   let name = $(".submit-input").val()
   let color = 0
   // ✔️ 표시가 들어있는지 확인해서 해당 div 집어내기
@@ -76,14 +79,14 @@ $(".submit-btn").click(()=>{
 const getParties = async () => {
   const memberList = await getDocs(collection(db, "member"));
   $(".member-wrap").empty()
-  $(".party-on").text(0)
+  $(".b-card > h4 > span").text(0)
   memberList.forEach((doc) => {
     let data = doc.data()
     console.log(data)
     let targetCard = $(`#${data.date}`)
 
     // 멤버 카운트 수 올리기
-    let memberCountDiv = targetCard.find('.party-on')
+    let memberCountDiv = targetCard.find('h4 > span')
     let memberCountNum = memberCountDiv.text()
     memberCountDiv.text(memberCountNum * 1 + 1)
 
@@ -91,9 +94,26 @@ const getParties = async () => {
     let colorIconDiv = `<button class="member-icon color-${data.color} data-toggle="popover" data-content="참여자 : ${data.name}"></button>`
     targetCard.find(".member-wrap").append(colorIconDiv)
   })
+
+  checkActive()
 };
 
+
+const checkActive = () => {
+    $('.b-card > h4 > span').each(function() {
+    let countNum = $(this).text() * 1
+    if( countNum >= 4) {
+      $(this).addClass("party-on")
+      $(this).removeClass("party-off")
+      $(this).closest('.b-card').find('.b-card-banner').addClass("activate")
+    }
+  })
+}
+
+
+
 getParties()
+
 
 $(document).ready(function() {
   $('[data-toggle="popover"]').popover();
