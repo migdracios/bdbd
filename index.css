@@ -37,10 +37,10 @@ body {
     height: 100vh;
 }
 
-.card-wrap {
-    width: 80%;
+.b-card-wrap {
+    width: 100%;
     height: 100%;
-    max-width: 1250px;
+    /* max-width: 1250px; */
     padding: 30px;
     display: flex;
     flex-wrap: wrap !important;
@@ -49,7 +49,7 @@ body {
     margin: auto;
 }
 
-.card {
+.b-card {
     width: 200px;
     height: 200px;
     background-color: white;
@@ -66,7 +66,7 @@ body {
     color: grey;
 }
 
-.card-banner {
+.b-card-banner {
     width: 100%;
     height: 40px;
     background-color: rgb(125, 125, 125);
@@ -93,7 +93,7 @@ body {
 .party-set {
     border: 4px solid red;
 }
-.modal-wrap {
+.b-modal-wrap {
     width: 100vw;
     height: 100vh;
     background-color: black;
@@ -101,9 +101,11 @@ body {
     top: 0;
     left: 0;
     z-index: 3;
+
+    display: none;
 }
 
-.modal {
+.b-modal {
     width: 500px;
     height: 500px;
     background-color: white;
