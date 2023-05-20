@@ -209,3 +209,8 @@ body {
 .activate {
     background-color: #E01D5A;
 }
+
+.popover {
+    max-width: 200px;
+  }
+  
