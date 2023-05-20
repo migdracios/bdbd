@@ -33,7 +33,7 @@ for (let i = 1; i <= 5; i++) {
   let dateString = (date.getMonth() + 1) + "월 " + date.getDate() + "일";
   dates.push(dateString);
 }
-console.log(dates)
+// console.log(dates)
 
 // 결과 출력
 let days = ['mon','tue','wed','thu','fri']

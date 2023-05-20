@@ -180,3 +180,32 @@ body {
     border-radius: 50%;
     margin: 5px;
 }
+.color-1 {
+    background-color: #33b249;
+    border-radius: 50%;
+    margin: 5px;
+}
+.color-2 {
+    background-color: #4681f4;
+    border-radius: 50%;
+    margin: 5px;
+}
+.color-3 {
+    background-color: #80669d;
+    border-radius: 50%;
+    margin: 5px;
+}
+.color-4 {
+    background-color: rgb(178, 68, 51);
+    border-radius: 50%;
+    margin: 5px;
+}
+.color-5 {
+    background-color: #dd7973;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.activate {
+    background-color: #E01D5A;
+}
