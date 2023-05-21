@@ -2,7 +2,8 @@
 
 // Firebase Importing
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import {getFirestore, collection, addDoc,getDocs} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs, deleteDoc} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import {query, where} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 // Firebase App Configuration
 const firebaseConfig = {
@@ -111,10 +112,111 @@ const checkActive = () => {
 }
 
 
-
-getParties()
-
-
 $(document).ready(function() {
   $('[data-toggle="popover"]').popover();
+  getParties()
 });
+
+const deleteParty = async (name, date, color) => {
+  const q = query(docRef, where("name", "==", name), where("date", "==", date), where("color", "==", color))
+  try {
+    const docRef = await deleteDoc(collection(db, "member", q))
+    alert("다음에 또 같이해요, 바이바이!")
+    window.location.reload()
+  } catch (e) {
+    console.error("Error deleteing document: ", e);
+  }
+}
+
+$(".b-modal-wrap").click(() => {
+  $(".b-modal-wrap").hide();
+});
+
+$(".b-modal").click((event) => {
+  event.stopPropagation();
+});
+
+$(document).ready(function () {
+  $(
+    ".party-color-1, .party-color-2, .party-color-3, .party-color-4, .party-color-5"
+  ).click(function () {
+    let isChecked = $(this).text().includes("✔️");
+
+    $(
+      ".party-color-1, .party-color-2, .party-color-3, .party-color-4, .party-color-5"
+    ).text("");
+
+    if (!isChecked) {
+      $(this).text("✔️");
+    }
+  });
+});
+
+// 요일 이름 배열
+let weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+// 오늘 날짜 가져오기
+let today = new Date();
+
+// 이번 주 월요일부터 금요일까지의 날짜와 요일 가져오기
+let dates = [];
+for (let i = 1; i <= 5; i++) {
+  let date = new Date(today);
+  date.setDate(today.getDate() - today.getDay() + i);
+  let dateString = date.getMonth() + 1 + "월 " + date.getDate() + "일";
+  dates.push(dateString);
+}
+
+// 결과 출력
+let days = ["mon", "tue", "wed", "thu", "fri"];
+days.forEach((day, index) => {
+  // console.log(day, index)
+  $(`.${day}`).text(dates[index]);
+});
+
+$(document).ready(function () {
+  $(".party-btn").click(function () {
+    let selectedDate = $(this).closest(".b-card").find(".b-card-date").text();
+    let selectedDay = $(this).closest(".b-card").find(".b-card-banner").text();
+    $(".b-modal-wrap").css("display", "flex");
+    window.scrollTo({ top: 0, behavior: "smooth" }); 
+    $(".submit-li-date").text(selectedDate + " " + selectedDay);
+  });
+
+});
+
+
+const sendRandomImageUrl = () =>{
+  urlList = [
+    "https://cdnfile.koreaboardgames.com/_data/product/thumbnail/UnlockEscapeAdventures_M.jpg",
+    "https://cdnfile.koreaboardgames.com/_data/product/thumbnail/4342cd347d5eb48f9931b66d3ce1d2b1.png",
+    "https://cdnfile.koreaboardgames.com/_data/product/202211/09/498c6872a6ba09c1f227c1564454e88a.png",
+    "https://cdnfile.koreaboardgames.com/_data/product/thumbnail/ece6de06839bd59a6360d71777c849c5.png",
+    "https://cdnfile.koreaboardgames.com/_data/product/thumbnail/ResistanceAvalon_Mid.jpg",
+    "https://cdnfile.koreaboardgames.com/_data/product/thumbnail/FlowofHistory_Mid.jpg",
+    "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdxUhYW%2FbtrKAjgAQV1%2FJJtsZ32I9wlGXjynpVQSXK%2Fimg.jpg"
+  ]
+  const randomIndex = Math.floor(Math.random() * urlList.length)
+  const randomItem = urlList[randomIndex]
+  $("#b-img").attr("src", randomItem)
+
+}
+
+sendRandomImageUrl()
+
+$(document).on("click", ".member-icon", function() {
+  $(".p-modal-wrap").css("display", "flex");
+  window.scrollTo({ top: 0, behavior: "smooth" }); 
+});
+
+$("#p-close").click(()=>{
+  $(".p-modal-wrap").hide()
+  window.scrollTo({ top: 700, behavior: "smooth" }); 
+})
+
+$("#p-delete").click(()=>{
+  let deleteResponse = confirm("참가 취소하시겠습니까?")
+  if (deleteResponse) {
+    deleteParty()
+  }
+})

@@ -214,3 +214,34 @@ body {
     max-width: 200px;
   }
   
+.member-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+
+    vertical-align: middle;
+}
+
+.p-modal-wrap {
+    width: 100vw;
+    height: 100vh;
+    background-color: #dee2e6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+    display: none;
+}
+
+.p-modal {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.p-modal-desc {
+    width: 80%;
+    word-break: keep-all;
+}
