@@ -139,6 +139,7 @@ $("#refresh-btn").click(()=>{
 
 $(".b-modal-wrap").click(() => {
   $(".b-modal-wrap").hide();
+  window.scrollTo({ top: 700, behavior: "smooth" });
 });
 
 $(".b-modal").click((event) => {
