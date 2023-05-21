@@ -41,7 +41,7 @@ const matchDate = (targetDate, matchingIndex=-1) => {
   idList.forEach((date, index)=> {
     if(targetDate==date) {
       console.log(targetDate, date)
-      matchingIndex = index
+      matchingIndex = index + 1
       // 반복문 실행 종료
       return false
     }
