@@ -245,3 +245,16 @@ body {
     width: 80%;
     word-break: keep-all;
 }
+
+@media (max-width: 400px) {
+    .member-name {
+        font-size: 15px;
+    }
+    .p-modal > p {
+        font-size: 13px;
+    }
+    .p-modla > button {
+        font-size : 13px
+    }    
+}
+  
