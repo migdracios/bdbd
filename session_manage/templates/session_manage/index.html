@@ -7,6 +7,70 @@
     <title>보동보동 세션 관리 앱</title>
 </head>
 <body>
-    
+    <h1>Add Member</h1>
+    <form id="add-member-form" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <button type="submit">Add Member</button>
+    </form>
+
+    <h2>Member List</h2>
+    <ul id="member-list">
+        <!-- Member list will be displayed here -->
+    </ul>
+
+    <script>
+        // AJAX request to add a member
+        document.getElementById('add-member-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/add_member/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // For AJAX request
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response here (e.g., display a success message)
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle errors here
+                    console.error('Error:', error);
+                });
+        });
+
+        // AJAX request to retrieve member list
+        function loadMemberList() {
+            fetch('/get_members/', {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // For AJAX request
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Display the member list
+                    const memberList = document.getElementById('member-list');
+                    memberList.innerHTML = ''; // Clear previous list
+
+                    data.forEach(member => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = member.name + ' (' + member.group + ')';
+                        memberList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    // Handle errors here
+                    console.error('Error:', error);
+                });
+        }
+
+        // Load member list when the page loads
+        loadMemberList();
+    </script>
 </body>
 </html>
