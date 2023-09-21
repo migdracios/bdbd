@@ -1,6 +1,7 @@
-from django.urls import path
-from session_manage.views import index
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('admin/', admin.site.urls),
+    path('', include('session_manage.urls')),
 ]
